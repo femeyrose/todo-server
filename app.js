@@ -67,6 +67,9 @@ app.use('/users', usersRouter);
 
 app.use('/',authMiddleware, indexRouter);
 //indexRouter is the index.js under routes
+//note:order of these (/users and authMiddleware is important)
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

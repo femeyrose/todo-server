@@ -17,6 +17,11 @@ const getTodos=()=>{
 
 //getTodo is a promise like .then
 
+const getTodo=(id)=>{
+    return dbTodo.Todo.findOne({_id:id});
+}
+//this is for editing the contents(name and desc) corresponds to a particular id
+
 
 
 const createTodo=(data)=>{
@@ -131,13 +136,30 @@ const createUser=(data)=>{
     })
 }
 
+const updateTodo = (id,data)=>{
+return dbTodo.Todo.findOneAndUpdate ({
+    _id:id
+},data)
+}
+
+const deleteTodo = (id)=>{
+    return dbTodo.Todo.deleteOne({
+        _id:id
+    })
+    }
+//passing only id for delete
 
 module.exports={
     createTodo,
     getTodos,
     createUser,
     login,
-    verifyToken
+    verifyToken,
+    updateTodo,
+    deleteTodo,
+    getTodo
+    
+
 }
 
 //instead of session authentication here we are using JWT token
